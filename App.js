@@ -27,10 +27,10 @@ genererCitation = event => {
 
   render() {
     return (
-      <Image source={{uri : this.state.img}} style={styles.container} >
+      <Image source={{uri : this.state.img}} style={styles.container} blurRadius={1} >
        <Citation details={this.state} />
        <Button  onPress={e => this.genererCitation(e)} style={styles.button} textStyle={{fontSize: 28, color: 'white'}}>I need more !</Button>
-     
+
       </Image>
     );
   }
@@ -47,12 +47,14 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   button: {
-    backgroundColor: 'rgba(0,0,0,0)',
+     backgroundColor: 'rgba(0,0,0,0)',
      borderColor: '#f5f5f5',
      borderWidth: 2,
      borderRadius: 30,
-     marginLeft: 80,
      padding: 20,
-     width: 250,
+     width: '70%',
+     height: '5%',
+     marginLeft: '15%',
+     marginBottom: '5%'
   }
 });
