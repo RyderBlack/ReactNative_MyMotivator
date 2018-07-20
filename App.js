@@ -1,6 +1,6 @@
 import React from 'react';
-import { Image,StyleSheet, Text, View } from 'react-native';
-import Button from 'apsl-react-native-button'
+import { ImageBackground,StyleSheet } from 'react-native';
+import Button from 'apsl-react-native-button';
 import Citation from './components/Citation';
 import citations from './citations';
 
@@ -12,7 +12,7 @@ componentWillMount() {
   this.genererCitation();
 }
 
-genererCitation = event => {
+genererCitation = () => {
   // On transforme les citations en array en recuperant les clefs
   const keyArray = Object.keys(citations);
   // une citation au hasard grace au math random arrondi
@@ -27,11 +27,10 @@ genererCitation = event => {
 
   render() {
     return (
-      <Image source={{uri : this.state.img}} style={styles.container} blurRadius={1} >
+      <ImageBackground source={{uri : this.state.img}} style={styles.container} >
        <Citation details={this.state} />
-       <Button  onPress={e => this.genererCitation(e)} style={styles.button} textStyle={{fontSize: 28, color: 'white'}}>I need more !</Button>
-
-      </Image>
+       <Button onPress={() => this.genererCitation()} textStyle={styles.buttonText} style={styles.moreButton}> I need more!</Button>
+      </ImageBackground>
     );
   }
 }
@@ -39,22 +38,19 @@ genererCitation = event => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: null,
-    height: null,
-    resizeMode: 'cover',
+    width: '100%',
+    height: '100%',
   },
-  button: {
-     backgroundColor: 'rgba(0,0,0,0)',
-     borderColor: '#f5f5f5',
-     borderWidth: 2,
-     borderRadius: 30,
-     padding: 20,
-     width: '70%',
-     height: '5%',
-     marginLeft: '15%',
-     marginBottom: '5%'
+  moreButton: {
+    borderColor: 'white',
+    width: '70%',
+    marginLeft: '15%',
+    marginBottom: '5%',
+    borderRadius: 30
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 22,
+    padding: 5
   }
 });
